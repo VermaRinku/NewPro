@@ -1,6 +1,8 @@
 package com.test.NewPro;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -11,7 +13,11 @@ public class LogIn {
 	
 	@BeforeSuite
 	public void setUp()
-    { driver = new FirefoxDriver();}
+	
+    { ProfilesIni profile = new ProfilesIni();
+      FirefoxProfile pr= profile.getProfile("default");
+		
+		driver = new FirefoxDriver(pr);}
 	
 	@Test
 	public void dologin()
